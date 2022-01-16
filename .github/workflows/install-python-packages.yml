@@ -33,7 +33,6 @@ jobs:
     - name: 'Python: Upgrade PIP / Setuptools'
       run: |
         python3 -m pip install --upgrade pip setuptools
-        python3 -m pip install -r requirements.txt
 
     - name: 'Install Ansible 2.9'
       run: |
