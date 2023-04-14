@@ -1,0 +1,26 @@
+name: Push File to Another Repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  push_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - name: Generate Text File
+        run: echo "This is a test file." > test_file.txt
+      
+      - name: Push File to Another Repository
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          repository: marcinpraczko/metadata-about-mp-repos
+          branch: main
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          force: true
+        env:
+          FILE_TO_PUSH: ./test_file.txt
